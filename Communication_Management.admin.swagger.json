@@ -6,7 +6,7 @@
         "version": "2.0"
     }, 
     "host": "biologeek.orange-labs.fr", 
-    "basePath": "/tmf-api/communicationManagement", 
+    "basePath": "/tmf-api/communicationManagement/v2/", 
     "schemes": [
         "https"
     ], 
@@ -33,210 +33,240 @@
                         "description": "Comma separated properties to display in response"
                     }, 
                     {
-                        "type": "string", 
+                        "type": "integer", 
                         "required": false, 
                         "in": "query", 
-                        "name": "@baseType", 
-                        "description": "For filtering: Indicates the type of resource. Here can be promotion."
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "@schemaLocation", 
-                        "description": "For filtering: Link to schema describing this REST resource."
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "@type", 
-                        "description": "For filtering: Indicates the type of resource. Here can be promotion."
-                    }, 
-                    {
-                        "type": "boolean", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "callbackFlag", 
-                        "description": "For filtering: It is used to decide whether the contact message needs to be replied."
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "content", 
-                        "description": "For filtering: The content of the communication message."
-                    }, 
-                    {
-                        "type": "boolean", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "logFlag", 
-                        "description": "For filtering: It is used to decide whether the contact log needs to be recorded."
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "priority", 
-                        "description": "For filtering: The priority of the communication message.\nSmall number means higher priority."
-                    }, 
-                    {
-                        "name": "sendTime", 
-                        "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: The time of sending communication message."
-                    }, 
-                    {
-                        "name": "sendTimeComplete", 
-                        "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: The time of completion of sending communication message."
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "status", 
-                        "description": "For filtering: Status of communication message"
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "subject", 
-                        "description": "For filtering: The title of the message. \nIt is necessary for the email and mobile app push."
+                        "name": "offset", 
+                        "description": "Requested index for start of resources to be provided in response"
                     }, 
                     {
                         "type": "integer", 
                         "required": false, 
                         "in": "query", 
+                        "name": "limit", 
+                        "description": "Requested number of resources to be provided in response"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "boolean", 
+                        "name": "callbackFlag", 
+                        "description": "For filtering on the base of 'callbackFlag' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "content", 
+                        "description": "For filtering on the base of 'content' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "boolean", 
+                        "name": "logFlag", 
+                        "description": "For filtering on the base of 'logFlag' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "priority", 
+                        "description": "For filtering on the base of 'priority' field (equality)"
+                    }, 
+                    {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "sendTime", 
+                        "description": "For filtering on the base of 'sendTime' field (equality)"
+                    }, 
+                    {
+                        "name": "sendTime.gt", 
+                        "description": "For filtering on the base of 'sendTime' field (great than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "sendTime.lt", 
+                        "description": "For filtering on the base of 'sendTime' field (less than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "sendTimeComplete", 
+                        "description": "For filtering on the base of 'sendTimeComplete' field (equality)"
+                    }, 
+                    {
+                        "name": "sendTimeComplete.gt", 
+                        "description": "For filtering on the base of 'sendTimeComplete' field (great than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "sendTimeComplete.lt", 
+                        "description": "For filtering on the base of 'sendTimeComplete' field (less than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "status", 
+                        "description": "For filtering on the base of 'status' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "subject", 
+                        "description": "For filtering on the base of 'subject' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "integer", 
                         "name": "tryTimes", 
-                        "description": "For filtering: If fail to send the communication message, how many times the system will retry."
+                        "description": "For filtering on the base of 'tryTimes' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
+                        "name": "tryTimes.gt", 
+                        "description": "For filtering on the base of 'tryTimes' field (great than)", 
+                        "type": "integer", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "tryTimes.lt", 
+                        "description": "For filtering on the base of 'tryTimes' field (less than)", 
+                        "type": "integer", 
+                        "in": "query"
+                    }, 
+                    {
                         "in": "query", 
+                        "type": "string", 
                         "name": "type", 
-                        "description": "For filtering: 1: SMS\n2: Email\n3: Mobile app push notification"
+                        "description": "For filtering on the base of 'type' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
                         "in": "query", 
-                        "name": "characteristic.name", 
-                        "description": "For filtering: Content parameter identifier"
-                    }, 
-                    {
                         "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "characteristic.value", 
-                        "description": "For filtering: Content parameter value"
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "receiver.appUserId", 
-                        "description": "For filtering: ID of the mobile app user"
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "receiver.email", 
-                        "description": "For filtering: Receiver address of email, if the communication type is email"
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "receiver.ip", 
-                        "description": "For filtering: IP address of the receiver"
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "receiver.name", 
-                        "description": "For filtering: Name of the receiver"
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "receiver.phoneNumber", 
-                        "description": "For filtering: Phone number of the receiver, if the communication type is SMS."
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "sender.email", 
-                        "description": "For filtering: Sender address of email, if the communication type is email"
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "sender.name", 
-                        "description": "For filtering: Name of the sender"
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "sender.phoneNumber", 
-                        "description": "For filtering: Phone number of the sender, if the communication type is SMS."
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
                         "name": "attachment.mimeType", 
-                        "description": "For filtering: "
+                        "description": "For filtering on the base of 'mimeType' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
                         "in": "query", 
+                        "type": "string", 
                         "name": "attachment.name", 
-                        "description": "For filtering: The name of the attached file in the communication message."
+                        "description": "For filtering on the base of 'name' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
                         "in": "query", 
+                        "type": "string", 
                         "name": "attachment.path", 
-                        "description": "For filtering: The path of the attached file in the communication message."
+                        "description": "For filtering on the base of 'path' field (equality)"
                     }, 
                     {
+                        "in": "query", 
+                        "type": "integer", 
                         "name": "attachment.size", 
-                        "format": "float", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "number", 
-                        "description": "For filtering: The file size of attached file."
+                        "description": "For filtering on the base of 'size' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
+                        "name": "attachment.size.gt", 
+                        "description": "For filtering on the base of 'size' field (great than)", 
+                        "type": "integer", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "attachment.size.lt", 
+                        "description": "For filtering on the base of 'size' field (less than)", 
+                        "type": "integer", 
+                        "in": "query"
+                    }, 
+                    {
                         "in": "query", 
+                        "type": "integer", 
                         "name": "attachment.sizeUnit", 
-                        "description": "For filtering: The name of attached file in the communication message"
+                        "description": "For filtering on the base of 'sizeUnit' field (equality)"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
+                        "name": "attachment.sizeUnit.gt", 
+                        "description": "For filtering on the base of 'sizeUnit' field (great than)", 
+                        "type": "integer", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "attachment.sizeUnit.lt", 
+                        "description": "For filtering on the base of 'sizeUnit' field (less than)", 
+                        "type": "integer", 
+                        "in": "query"
+                    }, 
+                    {
                         "in": "query", 
+                        "type": "string", 
                         "name": "attachment.url", 
-                        "description": "For filtering: The name of attached file in the communication message"
+                        "description": "For filtering on the base of 'url' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "receiver.appUserId", 
+                        "description": "For filtering on the base of 'appUserId' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "receiver.email", 
+                        "description": "For filtering on the base of 'email' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "receiver.ip", 
+                        "description": "For filtering on the base of 'ip' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "receiver.name", 
+                        "description": "For filtering on the base of 'name' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "receiver.phoneNumber", 
+                        "description": "For filtering on the base of 'phoneNumber' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "sender.email", 
+                        "description": "For filtering on the base of 'email' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "sender.name", 
+                        "description": "For filtering on the base of 'name' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "sender.phoneNumber", 
+                        "description": "For filtering on the base of 'phoneNumber' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "characteristic.name", 
+                        "description": "For filtering on the base of 'name' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "characteristic.value", 
+                        "description": "For filtering on the base of 'value' field (equality)"
                     }
                 ], 
                 "responses": {
@@ -521,22 +551,15 @@
         "CommunicationMessage": {
             "type": "object", 
             "description": "Communication message means a notification approach in the format of a message which can be dispatched (sent) to the certain user by the system with the content which can be felt and understood by the recipient. The user can be either a final customer or a customer service agent. The message can reach the customer in different interaction channels, including: email, short message, mobile app notification (push).", 
+            "required": [
+                "type", 
+                "content", 
+                "sender", 
+                "receiver"
+            ], 
             "properties": {
-                "@baseType": {
-                    "type": "string", 
-                    "description": "Indicates the type of resource. Here can be promotion."
-                }, 
-                "@schemaLocation": {
-                    "type": "string", 
-                    "description": "Link to schema describing this REST resource."
-                }, 
-                "@type": {
-                    "type": "string", 
-                    "description": "Indicates the type of resource. Here can be promotion."
-                }, 
                 "callbackFlag": {
-                    "type": "boolean", 
-                    "description": "It is used to decide whether the contact message needs to be replied."
+                    "type": "boolean"
                 }, 
                 "content": {
                     "type": "string", 
@@ -555,8 +578,7 @@
                     "description": "Unique identifier of Communication Message"
                 }, 
                 "logFlag": {
-                    "type": "boolean", 
-                    "description": "It is used to decide whether the contact log needs to be recorded."
+                    "type": "boolean"
                 }, 
                 "priority": {
                     "type": "string", 
@@ -581,17 +603,16 @@
                     "description": "The title of the message. \nIt is necessary for the email and mobile app push."
                 }, 
                 "tryTimes": {
-                    "type": "integer", 
-                    "description": "If fail to send the communication message, how many times the system will retry."
+                    "type": "integer"
                 }, 
                 "type": {
                     "type": "string", 
                     "description": "1: SMS\n2: Email\n3: Mobile app push notification"
                 }, 
-                "characteristic": {
+                "attachment": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CommunicationRequestCharacteristic"
+                        "$ref": "#/definitions/Attachment"
                     }
                 }, 
                 "receiver": {
@@ -603,11 +624,23 @@
                 "sender": {
                     "$ref": "#/definitions/Sender"
                 }, 
-                "attachment": {
+                "characteristic": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/Attachment"
+                        "$ref": "#/definitions/CommunicationRequestCharacteristic"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
@@ -621,21 +654,8 @@
                 "receiver"
             ], 
             "properties": {
-                "@baseType": {
-                    "type": "string", 
-                    "description": "Indicates the type of resource. Here can be promotion."
-                }, 
-                "@schemaLocation": {
-                    "type": "string", 
-                    "description": "Link to schema describing this REST resource."
-                }, 
-                "@type": {
-                    "type": "string", 
-                    "description": "Indicates the type of resource. Here can be promotion."
-                }, 
                 "callbackFlag": {
-                    "type": "boolean", 
-                    "description": "It is used to decide whether the contact message needs to be replied."
+                    "type": "boolean"
                 }, 
                 "content": {
                     "type": "string", 
@@ -646,8 +666,7 @@
                     "description": "Description for the whole object"
                 }, 
                 "logFlag": {
-                    "type": "boolean", 
-                    "description": "It is used to decide whether the contact log needs to be recorded."
+                    "type": "boolean"
                 }, 
                 "priority": {
                     "type": "string", 
@@ -672,17 +691,16 @@
                     "description": "The title of the message. \nIt is necessary for the email and mobile app push."
                 }, 
                 "tryTimes": {
-                    "type": "integer", 
-                    "description": "If fail to send the communication message, how many times the system will retry."
+                    "type": "integer"
                 }, 
                 "type": {
                     "type": "string", 
                     "description": "1: SMS\n2: Email\n3: Mobile app push notification"
                 }, 
-                "characteristic": {
+                "attachment": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CommunicationRequestCharacteristic"
+                        "$ref": "#/definitions/Attachment"
                     }
                 }, 
                 "receiver": {
@@ -694,11 +712,23 @@
                 "sender": {
                     "$ref": "#/definitions/Sender"
                 }, 
-                "attachment": {
+                "characteristic": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/Attachment"
+                        "$ref": "#/definitions/CommunicationRequestCharacteristic"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
@@ -706,21 +736,8 @@
             "type": "object", 
             "description": "Communication message means a notification approach in the format of a message which can be dispatched (sent) to the certain user by the system with the content which can be felt and understood by the recipient. The user can be either a final customer or a customer service agent. The message can reach the customer in different interaction channels, including: email, short message, mobile app notification (push).\nSkipped properties: id,href,id,href", 
             "properties": {
-                "@baseType": {
-                    "type": "string", 
-                    "description": "Indicates the type of resource. Here can be promotion."
-                }, 
-                "@schemaLocation": {
-                    "type": "string", 
-                    "description": "Link to schema describing this REST resource."
-                }, 
-                "@type": {
-                    "type": "string", 
-                    "description": "Indicates the type of resource. Here can be promotion."
-                }, 
                 "callbackFlag": {
-                    "type": "boolean", 
-                    "description": "It is used to decide whether the contact message needs to be replied."
+                    "type": "boolean"
                 }, 
                 "content": {
                     "type": "string", 
@@ -731,8 +748,7 @@
                     "description": "Description for the whole object"
                 }, 
                 "logFlag": {
-                    "type": "boolean", 
-                    "description": "It is used to decide whether the contact log needs to be recorded."
+                    "type": "boolean"
                 }, 
                 "priority": {
                     "type": "string", 
@@ -757,17 +773,16 @@
                     "description": "The title of the message. \nIt is necessary for the email and mobile app push."
                 }, 
                 "tryTimes": {
-                    "type": "integer", 
-                    "description": "If fail to send the communication message, how many times the system will retry."
+                    "type": "integer"
                 }, 
                 "type": {
                     "type": "string", 
                     "description": "1: SMS\n2: Email\n3: Mobile app push notification"
                 }, 
-                "characteristic": {
+                "attachment": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/CommunicationRequestCharacteristic"
+                        "$ref": "#/definitions/Attachment"
                     }
                 }, 
                 "receiver": {
@@ -779,35 +794,90 @@
                 "sender": {
                     "$ref": "#/definitions/Sender"
                 }, 
-                "attachment": {
+                "characteristic": {
                     "type": "array", 
                     "items": {
-                        "$ref": "#/definitions/Attachment"
+                        "$ref": "#/definitions/CommunicationRequestCharacteristic"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
-        "CommunicationRequestCharacteristic": {
+        "Attachment": {
             "type": "object", 
-            "description": "<b><i>The values of parameters which are used in the content if the content contains them.</i></b>", 
-            "required":[
-			      "name",
-			      "value"
-			],
-			"properties": {
+            "description": "Complements the description of an element (for instance a product) through video, pictures...", 
+            "properties": {
+                "description": {
+                    "type": "string", 
+                    "description": "A narrative text describing the content of the attachment"
+                }, 
+                "href": {
+                    "type": "string", 
+                    "description": "Reference of the attachment"
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique identifier of the attachment"
+                }, 
+                "mimeType": {
+                    "type": "string", 
+                    "description": "The mime type of the document as defined in RFC 2045 and RFC 2046 specifications."
+                }, 
                 "name": {
                     "type": "string", 
-                    "description": "Content parameter identifier"
+                    "description": "The name of the file"
                 }, 
-                "value": {
+                "path": {
                     "type": "string", 
-                    "description": "Content parameter value"
+                    "description": "The path of the attached file"
+                }, 
+                "size": {
+                    "type": "integer", 
+                    "description": "The size of the file (sizeUnit if present indicates the unit, otherwise kilobytes is the default)."
+                }, 
+                "sizeUnit": {
+                    "type": "integer", 
+                    "description": "The unit size for expressing the size of the file (MB,kB...)"
+                }, 
+                "url": {
+                    "type": "string", 
+                    "description": "Uniform Resource Locator, is a web page address (a subset of URI)"
+                }, 
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod", 
+                    "description": "Period of validity of the attachment"
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
         "Receiver": {
             "type": "object", 
             "description": "<b><i>Receivers of the communication message.</i></b>", 
+            "required": [
+                "id"
+            ], 
             "properties": {
                 "appUserId": {
                     "type": "string", 
@@ -834,13 +904,20 @@
                     "description": "Phone number of the receiver, if the communication type is SMS."
                 }, 
                 "party": {
-                    "$ref": "#/definitions/RelatePartyRef"
+                    "$ref": "#/definitions/RelatedPartyRef"
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
                 }
             }
         }, 
         "Sender": {
             "type": "object", 
             "description": "<b><i>Sender of the communication message.</i></b>", 
+            "required": [
+                "id"
+            ], 
             "properties": {
                 "email": {
                     "type": "string", 
@@ -859,63 +936,33 @@
                     "description": "Phone number of the sender, if the communication type is SMS."
                 }, 
                 "party": {
-                    "$ref": "#/definitions/RelatePartyRef"
+                    "$ref": "#/definitions/RelatedPartyRef"
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
                 }
             }
         }, 
-        "Attachment": {
+        "CommunicationRequestCharacteristic": {
             "type": "object", 
-            "description": "Complements the description of an element (for instance a product) through video, pictures...", 
-             "required": [
-                "name", 
-                "path"
-            ], 
-			"properties": {
-                "description": {
-                    "type": "string", 
-                    "description": "A narrative text describing the content of the attachment"
-                }, 
-                "href": {
-                    "type": "string", 
-                    "description": "Reference of the attachment"
-                }, 
-                "id": {
-                    "type": "string", 
-                    "description": "Unique identifier of the attachment"
-                }, 
-                "type": {
-                    "type": "string", 
-                    "description": "Attachment type such as video, picture"
-                }, 
-                "url": {
-                    "type": "string", 
-                    "description": "Uniform Resource Locator, is a web page address (a subset of URI)"
-                }
-            }
-        }, 
-        "RelatePartyRef": {
-            "type": "object", 
-            "description": "<b><i>The party entity of the receiver (user)</i></b>", 
+            "description": "<b><i>The values of parameters which are used in the content if the content contains them.</i></b>", 
             "properties": {
-                "href": {
-                    "type": "string", 
-                    "description": "Hypertext Reference of the party"
-                }, 
-                "id": {
-                    "type": "string", 
-                    "description": "Unique identifier of party"
-                }, 
                 "name": {
                     "type": "string", 
-                    "description": "name of the party"
+                    "description": "Content parameter identifier"
                 }, 
-                "role": {
+                "value": {
                     "type": "string", 
-                    "description": "role of the party (customer, partner, etc)"
+                    "description": "Content parameter value"
                 }, 
-                "validFor": {
-                    "$ref": "#/definitions/TimePeriod", 
-                    "description": "Validity period of the party"
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
                 }
             }
         }, 
@@ -932,6 +979,32 @@
                     "type": "string", 
                     "format": "date-time", 
                     "description": "An instant of time, starting at the TimePeriod"
+                }
+            }
+        }, 
+        "RelatedPartyRef": {
+            "type": "object", 
+            "description": "RelatedParty reference. A related party defines party or party role linked to a specific entity.", 
+            "properties": {
+                "href": {
+                    "type": "string", 
+                    "description": "Reference of the related party, could be a party reference or a party role reference"
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique identifier of a related party"
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Name of the related party"
+                }, 
+                "role": {
+                    "type": "string", 
+                    "description": "Role of the related party."
+                }, 
+                "@referredType": {
+                    "type": "string", 
+                    "description": "The actual type of the target instance when needed for disambiguation."
                 }
             }
         }, 
@@ -973,24 +1046,36 @@
         "Error": {
             "required": [
                 "code", 
-                "message"
+                "reason"
             ], 
             "properties": {
                 "code": {
                     "type": "integer", 
-                    "description": "An integer coding the error type. This is given to caller so he can translate them if required."
+                    "description": "Application related code."
+                }, 
+                "reason": {
+                    "type": "integer", 
+                    "description": "Text that explains the reason for error."
                 }, 
                 "message": {
                     "type": "string", 
-                    "description": "A short localized string that describes the error."
+                    "description": "(optional) Text that provide more details and corrective actions related to the error."
                 }, 
-                "description": {
-                    "type": "string", 
-                    "description": "(optional) A long localized error description if needed. It can contain precise information about which parameter is missing, or what are the identifier acceptable values."
+                "status": {
+                    "type": "integer", 
+                    "description": "(optional) http error code extension like 400-2"
                 }, 
-                "infoURL": {
+                "referenceError": {
                     "type": "string", 
                     "description": "(optional) A URL to online documentation that provides more information about the error."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "(optional) The class type of a REST resource."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "(optional) A link to the schema describing a REST resource."
                 }
             }
         }
