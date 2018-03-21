@@ -332,6 +332,46 @@
                 }
             }
         }, 
+         "/communicationMessage/send": {
+              "post": {
+                "operationId": "creates a new CommunicationMessage and send it", 
+                "summary": "Creates a 'CommunicationMessage' and send it", 
+                "tags": [
+                    "communicationMessage"
+                ], 
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/CommunicationMessage_Create"
+                        }, 
+                        "required": true, 
+                        "in": "body", 
+                        "name": "communicationMessage", 
+                        "description": "The Communication Message to be created"
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "Created and sended", 
+                        "schema": {
+                            "$ref": "#/definitions/CommunicationMessage"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }, 
         "/communicationMessage/{id}": {
             "get": {
                 "operationId": "retrieveCommunicationMessage", 
@@ -456,6 +496,44 @@
                     }, 
                     "404": {
                         "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }, 
+        "/communicationMessage/{id}/send": {
+              "post": {
+                "operationId": "Sends a CommunicationMessage ", 
+                "summary": "Sends 'CommunicationMessage' ", 
+                "tags": [
+                    "communicationMessage"
+                ], 
+                "parameters": [
+                    {
+                        "required": true, 
+                        "type": "string", 
+                        "name": "id", 
+                        "in": "path", 
+                        "description": "Identifier of the Communication Message"
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": " sended", 
+                        "schema": {
+                            "$ref": "#/definitions/CommunicationMessage"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -820,6 +898,10 @@
         "Attachment": {
             "type": "object", 
             "description": "Complements the description of an element (for instance a product) through video, pictures...", 
+            "required": [
+                "name",
+                "path"
+            ], 
             "properties": {
                 "description": {
                     "type": "string", 
@@ -950,6 +1032,10 @@
         "CommunicationRequestCharacteristic": {
             "type": "object", 
             "description": "<b><i>The values of parameters which are used in the content if the content contains them.</i></b>", 
+            "required": [
+                "name", 
+                "value"
+            ], 
             "properties": {
                 "name": {
                     "type": "string", 
