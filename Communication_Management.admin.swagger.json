@@ -988,7 +988,7 @@
                     "type": "string", 
                     "description": "Phone number of the receiver, if the communication type is SMS."
                 }, 
-                "party": {
+                "relatedParty": {
                     "$ref": "#/definitions/RelatedPartyRef"
                 }, 
                 "@type": {
@@ -1020,7 +1020,7 @@
                     "type": "string", 
                     "description": "Phone number of the sender, if the communication type is SMS."
                 }, 
-                "party": {
+                "relatedParty": {
                     "$ref": "#/definitions/RelatedPartyRef"
                 }, 
                 "@type": {
