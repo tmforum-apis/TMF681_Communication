@@ -145,6 +145,12 @@
                     {
                         "in": "query", 
                         "type": "string", 
+                        "name": "version", 
+                        "description": "The version of message template"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
                         "name": "type", 
                         "description": "For filtering on the base of 'type' field (equality)"
                     }, 
@@ -686,6 +692,10 @@
                 "tryTimes": {
                     "type": "integer"
                 }, 
+                "version": {
+                    "type": "string", 
+                    "description": "the version of message template"
+                }, 
                 "type": {
                     "type": "string", 
                     "description": "1: SMS\n2: Email\n3: Mobile app push notification"
@@ -774,6 +784,10 @@
                 "tryTimes": {
                     "type": "integer"
                 }, 
+                "version": {
+                    "type": "string", 
+                    "description": "the version of message template"
+                }, 
                 "type": {
                     "type": "string", 
                     "description": "1: SMS\n2: Email\n3: Mobile app push notification"
@@ -855,6 +869,10 @@
                 }, 
                 "tryTimes": {
                     "type": "integer"
+                }, 
+                "version": {
+                    "type": "string", 
+                    "description": "the version of message template"
                 }, 
                 "type": {
                     "type": "string", 
