@@ -899,8 +899,8 @@
             "type": "object", 
             "description": "Complements the description of an element (for instance a product) through video, pictures...", 
             "required": [
-                "name",
-                "path"
+                "id",
+                "href"
             ], 
             "properties": {
                 "description": {
