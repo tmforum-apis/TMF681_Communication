@@ -247,6 +247,13 @@
                     {
                         "in": "query", 
                         "type": "string", 
+                        "name": "receiver.type", 
+                        "description": "For filtering on the base of 'type' field (equality)"
+                    }, 
+                    
+                    {
+                        "in": "query", 
+                        "type": "string", 
                         "name": "sender.email", 
                         "description": "For filtering on the base of 'email' field (equality)"
                     }, 
