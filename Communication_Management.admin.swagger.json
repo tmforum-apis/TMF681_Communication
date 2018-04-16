@@ -1002,6 +1002,10 @@
                     "type": "string", 
                     "description": "Name of the receiver"
                 }, 
+                "type": {
+                    "type": "string", 
+                    "description": "The type of receiver. Eg. the type of email receiver could be in  “to”, “cc” or “bcc” type."
+                }, 
                 "phoneNumber": {
                     "type": "string", 
                     "description": "Phone number of the receiver, if the communication type is SMS."
