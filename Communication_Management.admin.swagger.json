@@ -250,7 +250,6 @@
                         "name": "receiver.type", 
                         "description": "For filtering on the base of 'type' field (equality)"
                     }, 
-                    
                     {
                         "in": "query", 
                         "type": "string", 
@@ -298,6 +297,24 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+					"404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
                     "500": {
                         "description": "Internal Server Error", 
                         "schema": {
@@ -336,6 +353,24 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+					"404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
                     "500": {
                         "description": "Internal Server Error", 
                         "schema": {
@@ -345,7 +380,7 @@
                 }
             }
         }, 
-         "/communicationMessage/send": {
+        "/communicationMessage/send": {
               "post": {
                 "operationId": "creates a new CommunicationMessage and send it", 
                 "summary": "Creates a 'CommunicationMessage' and send it", 
@@ -372,6 +407,24 @@
                     }, 
                     "400": {
                         "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+					"404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -416,13 +469,25 @@
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
-                    }, 
-                    "404": {
+                    },
+					"404": {
                         "description": "Not Found", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 					
                     "500": {
                         "description": "Internal Server Error", 
                         "schema": {
@@ -456,7 +521,7 @@
                     }
                 ], 
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "Updated", 
                         "schema": {
                             "$ref": "#/definitions/CommunicationMessage"
@@ -470,6 +535,18 @@
                     }, 
                     "404": {
                         "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+					"405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -513,6 +590,18 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+					"405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
                     "500": {
                         "description": "Internal Server Error", 
                         "schema": {
@@ -547,6 +636,24 @@
                     }, 
                     "400": {
                         "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+					"404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
