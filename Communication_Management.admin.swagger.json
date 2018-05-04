@@ -6,7 +6,7 @@
         "version": "2.0"
     }, 
     "host": "serverRoot", 
-    "basePath": "/tmf-api/communicationManagement/v1/", 
+    "basePath": "/tmf-api/communicationManagement/v2/", 
     "schemes": [
         "https"
     ], 
@@ -297,7 +297,7 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-					"401": {
+                    "401": {
                         "description": "Unauthorized", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -309,7 +309,7 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-					"404": {
+                    "404": {
                         "description": "Not Found", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -365,7 +365,7 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-					"401": {
+                    "401": {
                         "description": "Unauthorized", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -377,7 +377,7 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-					"404": {
+                    "404": {
                         "description": "Not Found", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -404,7 +404,7 @@
                 }
             }
         }, 
-        "/communicationMessage/send": {
+		"/communicationMessage/send": {
               "post": {
                 "operationId": "creates a new CommunicationMessage and send it", 
                 "summary": "Creates a 'CommunicationMessage' and send it", 
@@ -422,11 +422,17 @@
                         "description": "The Communication Message to be created"
                     }
                 ], 
-                "responses": {
+                  "responses": {
                     "200": {
-                        "description": "Created and sended", 
+                        "description": "Sent", 
                         "schema": {
                             "$ref": "#/definitions/CommunicationMessage"
+                        }
+                    },
+                    "201": {
+                        "description": "Sent", 
+                        "schema": {
+                            "$ref": "#/definitions/EventSubscription"
                         }
                     }, 
                     "400": {
@@ -435,7 +441,7 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-					"401": {
+		    "401": {
                         "description": "Unauthorized", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -505,8 +511,8 @@
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
-                    },
-					"401": {
+                    }, 
+                    "401": {
                         "description": "Unauthorized", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -518,7 +524,7 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-					"404": {
+                    "404": {
                         "description": "Not Found", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -535,7 +541,7 @@
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
-                    }, 					
+                    }, 
                     "500": {
                         "description": "Internal Server Error", 
                         "schema": {
@@ -581,7 +587,7 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-					"401": {
+                    "401": {
                         "description": "Unauthorized", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -599,7 +605,7 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-					"405": {
+                    "405": {
                         "description": "Method Not allowed", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -644,7 +650,7 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-					"401": {
+                    "401": {
                         "description": "Unauthorized", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -662,7 +668,7 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-					"405": {
+                    "405": {
                         "description": "Method Not allowed", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -683,7 +689,7 @@
                 }
             }
         }, 
-        "/communicationMessage/{id}/send": {
+	"/communicationMessage/{id}/send": {
               "post": {
                 "operationId": "Sends a CommunicationMessage ", 
                 "summary": "Sends 'CommunicationMessage' ", 
@@ -701,9 +707,15 @@
                 ], 
                 "responses": {
                     "200": {
-                        "description": " sended", 
+                        "description": "Sent", 
                         "schema": {
                             "$ref": "#/definitions/CommunicationMessage"
+                        }
+                    }, 
+                    "201": {
+                        "description": "Sent", 
+                        "schema": {
+                            "$ref": "#/definitions/EventSubscription"
                         }
                     }, 
                     "400": {
@@ -712,7 +724,7 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-					"401": {
+		    "401": {
                         "description": "Unauthorized", 
                         "schema": {
                             "$ref": "#/definitions/Error"
@@ -941,13 +953,13 @@
                 "tryTimes": {
                     "type": "integer"
                 }, 
-                "version": {
-                    "type": "string", 
-                    "description": "the version of message template"
-                }, 
                 "type": {
                     "type": "string", 
                     "description": "1: SMS\n2: Email\n3: Mobile app push notification"
+                }, 
+                "version": {
+                    "type": "string", 
+                    "description": "The version of the communication message"
                 }, 
                 "attachment": {
                     "type": "array", 
@@ -1040,7 +1052,7 @@
                 "version": {
                     "type": "string", 
                     "description": "The version of the communication message"
-                },
+                }, 
                 "attachment": {
                     "type": "array", 
                     "items": {
@@ -1254,7 +1266,7 @@
                 "type": {
                     "type": "string", 
                     "description": "The type of the receiver of the communication message"
-                },
+                }, 
                 "relatedParty": {
                     "$ref": "#/definitions/RelatedPartyRef"
                 }, 
