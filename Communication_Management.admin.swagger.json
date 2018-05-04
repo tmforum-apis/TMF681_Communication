@@ -145,14 +145,14 @@
                     {
                         "in": "query", 
                         "type": "string", 
-                        "name": "version", 
-                        "description": "The version of message template"
+                        "name": "type", 
+                        "description": "For filtering on the base of 'type' field (equality)"
                     }, 
                     {
                         "in": "query", 
                         "type": "string", 
-                        "name": "type", 
-                        "description": "For filtering on the base of 'type' field (equality)"
+                        "name": "version", 
+                        "description": "For filtering on the base of 'version' field (equality)"
                     }, 
                     {
                         "in": "query", 
@@ -297,6 +297,18 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+					"401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
 					"404": {
                         "description": "Not Found", 
                         "schema": {
@@ -349,6 +361,18 @@
                     }, 
                     "400": {
                         "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+					"401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -407,6 +431,18 @@
                     }, 
                     "400": {
                         "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+					"401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -470,6 +506,18 @@
                             "$ref": "#/definitions/Error"
                         }
                     },
+					"401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
 					"404": {
                         "description": "Not Found", 
                         "schema": {
@@ -533,6 +581,18 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+					"401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
                     "404": {
                         "description": "Not Found", 
                         "schema": {
@@ -580,6 +640,18 @@
                     }, 
                     "400": {
                         "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+					"401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -640,6 +712,18 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+					"401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
 					"404": {
                         "description": "Not Found", 
                         "schema": {
@@ -693,14 +777,44 @@
                             "$ref": "#/definitions/EventSubscription"
                         }
                     }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
                     "500": {
                         "description": "Internal Server Error", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+                    "401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
                     "400": {
                         "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -726,8 +840,14 @@
                     }
                 ], 
                 "responses": {
-                    "201": {
-                        "description": "Unsubscribed"
+                    "204": {
+                        "description": "Deleted"
+                    }, 
+                    "405": {
+                        "description": "Method not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
                     }, 
                     "404": {
                         "description": "Not Found", 
@@ -735,8 +855,23 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
-                    "204": {
-                        "description": "Deleted"
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
                     }, 
                     "500": {
                         "description": "Internal Server Error", 
@@ -898,14 +1033,14 @@
                 "tryTimes": {
                     "type": "integer"
                 }, 
-                "version": {
-                    "type": "string", 
-                    "description": "the version of message template"
-                }, 
                 "type": {
                     "type": "string", 
                     "description": "1: SMS\n2: Email\n3: Mobile app push notification"
                 }, 
+                "version": {
+                    "type": "string", 
+                    "description": "The version of the communication message"
+                },
                 "attachment": {
                     "type": "array", 
                     "items": {
@@ -984,13 +1119,13 @@
                 "tryTimes": {
                     "type": "integer"
                 }, 
-                "version": {
-                    "type": "string", 
-                    "description": "the version of message template"
-                }, 
                 "type": {
                     "type": "string", 
                     "description": "1: SMS\n2: Email\n3: Mobile app push notification"
+                }, 
+                "version": {
+                    "type": "string", 
+                    "description": "The version of the communication message"
                 }, 
                 "attachment": {
                     "type": "array", 
@@ -1112,14 +1247,14 @@
                     "type": "string", 
                     "description": "Name of the receiver"
                 }, 
-                "type": {
-                    "type": "string", 
-                    "description": "The type of receiver. Eg. the type of email receiver could be in  “to”, “cc” or “bcc” type."
-                }, 
                 "phoneNumber": {
                     "type": "string", 
                     "description": "Phone number of the receiver, if the communication type is SMS."
                 }, 
+                "type": {
+                    "type": "string", 
+                    "description": "The type of the receiver of the communication message"
+                },
                 "relatedParty": {
                     "$ref": "#/definitions/RelatedPartyRef"
                 }, 
