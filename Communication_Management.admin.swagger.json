@@ -1196,7 +1196,7 @@
                     "description": "Application related code."
                 }, 
                 "reason": {
-                    "type": "integer", 
+                    "type": "string", 
                     "description": "Text that explains the reason for error."
                 }, 
                 "message": {
