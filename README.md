@@ -1,10 +1,8 @@
-# TMF681_Communication
-TM Forum Open APIs (Apache 2.0) Communication Management API
+# TMF681 Communication
 
-Provides a capability to create and send communications, notifications and
+TM Forum Open API (Apache 2.0) Communication API.
+
 instructions to Parties, Individuals, Organizations or Users.
 
-To access this API; (the Specification, Postman Collection, Swagger file, Swagger-UI,
-Reference Implementation, Conformance Profile, and CTK) go to the Open API table at:
-
-https://projects.tmforum.org/wiki/display/API/Open+API+Table
+The resources in this repository are a mirror of the official versions, published here for your convenience.
+The authoritative source of information for this API is: https://www.tmforum.org/oda/open-apis/directory/
